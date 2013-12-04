@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+  <head>
+    <title>AngularJS Form</title>
+    <script type="text/javascript" src="http://code.angularjs.org/1.1.4/angular.min.js"></script>
+    <script type="text/javascript" src="js/modules/promise-tracker.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </head>
+  <body>
+  
+  <h2>AngularJs form</h2>
+
+  <p>This is an AngularJs based form. It uses a controller to handle form validation and submission.</p>
+  <div ng-controller="help">
+    <span id="messages" ng-bind="messages"></span>
+    <div ng-show="progress.active()" style="color: red; font-size: 50px;">Loading...</div>
+    <form name="helpForm" novalidate>
+      <span class="error" ng-show="submitted && helpForm.name.$error.required">Required!</span>
+      Your Name <input type="text" name="name" ng-model="name" required /><br />
+
+      <span class="error" ng-show="submitted && helpForm.email.$error.required">Required!</span>
+      <span class="error" ng-show="submitted && helpForm.$error.email">Invalid email!</span>
+      Your E-mail address <input type="email" name="email" ng-model="email" required /><br />
+
+      What is the nature of your request?
+      <span class="error" ng-show="submitted && helpForm.subjectList.$error.required">Required!</span>
+      <select name="subjectList" ng-model="subjectList" ng-options="id as value for (id, value) in subjectListOptions" required>
+        <option value=""></option>
+      </select><br />
+
+      <span class="error" ng-show="submitted && helpForm.$error.url">Invalid URL format!</span>
+      URL of Relevant Page <input type="url" name="url" ng-model="url" /><br />
+
+      <span class="error" ng-show="submitted && helpForm.comments.$error.required">Required!</span>
+      Description <textarea name="comments" ng-model="comments" required></textarea><br />
+
+      <button ng-disabled="progress.active()" ng-click="submit(helpForm)">Submit</button>
+    </form>
+  </div>
+
+  </body>
+</html>
