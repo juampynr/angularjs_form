@@ -8,7 +8,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       'account': 'Account Problems',
       'mobile': 'Mobile',
       'user': 'Report a Malicious User',
-      'video': 'Video',
       'other': 'Other'
     };
 
@@ -27,7 +26,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       var config = {
         params : {
           'callback' : 'JSON_CALLBACK',
-          'feedbackTypeList' : 'help',
           'name' : $scope.name,
           'email' : $scope.email,
           'subjectList' : $scope.subjectList,
