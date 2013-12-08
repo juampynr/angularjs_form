@@ -38,7 +38,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       // Perform JSONP request.
       $http.jsonp('response.json', config)
         .success(function(data, status, headers, config) {
-          $scope.progress = data;
           if (data.status == 'OK') {
             $scope.name = null;
             $scope.email = null;
