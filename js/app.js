@@ -1,3 +1,6 @@
+/**
+ * AngularJS module to process a form.
+ */
 angular.module('myApp', ['ajoslin.promise-tracker'])
   .controller('help', function ($scope, $http, $log, promiseTracker) {
     $scope.subjectListOptions = {
