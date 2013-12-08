@@ -42,14 +42,13 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
         .success(function(data, status, headers, config) {
           $scope.progress = data;
           if (data.status == 'OK') {
-            $scope.messages = data.statusMessage;
-            $scope.submitted = false;
             $scope.name = null;
             $scope.email = null;
             $scope.subjectList = null;
             $scope.url = null;
             $scope.comments = null;
             $scope.messages = 'Your form has been sent!';
+            $scope.submitted = false;
           } else {
             $scope.messages = 'Oops, we received your request, but there was an error.';
             $log.error(data);
