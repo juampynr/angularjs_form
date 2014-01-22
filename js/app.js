@@ -2,7 +2,7 @@
  * AngularJS module to process a form.
  */
 angular.module('myApp', ['ajoslin.promise-tracker'])
-  .controller('help', function ($scope, $http, $log, promiseTracker) {
+  .controller('help', function ($scope, $http, $log, promiseTracker, $timeout) {
     $scope.subjectListOptions = {
       'bug': 'Report a Bug',
       'account': 'Account Problems',
@@ -47,7 +47,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
             $scope.messages = 'Your form has been sent!';
             $scope.submitted = false;
           } else {
-            $scope.messages = 'Oops, we received your request, but there was an error.';
+            $scope.messages = 'Oops, we received your request, but there was an error processing it.';
             $log.error(data);
           }
         })
@@ -56,5 +56,10 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $scope.messages = 'There was a network error. Try again later.';
           $log.error(data);
         });
+
+      // Hide the status message which was set above after 3 seconds.
+      $timeout(function() {
+        $scope.messages = null;
+      }, 3000);
     }
   });
