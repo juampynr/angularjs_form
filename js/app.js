@@ -61,5 +61,5 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       $timeout(function() {
         $scope.messages = null;
       }, 3000);
-    }
+    };
   });
