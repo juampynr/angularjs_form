@@ -6,7 +6,7 @@ See it in action at http://juampy72.github.io/angularjs_form
 
 There is a step by step tutorial on this form at [the Lullabot Blog](https://www.lullabot.com/blog/article/processing-forms-angularjs).
 
-## Instalation
+## Installation
 
 Simply clone this repository on a directory accessible from your local web server.
 Then, open index.html from a web browser.
