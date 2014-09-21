@@ -58,9 +58,8 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
         });
 
       // Hide the status message which was set above after 3 seconds.
-      var promise = $timeout(function() {
+      $timeout(function() {
         $scope.messages = null;
       }, 3000);
-      $scope.progress.addPromise(promise);
     };
   });
