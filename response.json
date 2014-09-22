@@ -1,1 +1,1 @@
-angular.callbacks._0({ status : "OK" })
+angular.callbacks._0({ status : "OK", info : 'This is a dummy response used for this example. Normally this would be a server side application that validates submitted data and performs the email submission.' })
