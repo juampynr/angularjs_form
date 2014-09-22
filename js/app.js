@@ -11,6 +11,9 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       'other': 'Other'
     };
 
+    // Inititate the promise tracker to track form submissions.
+    $scope.progress = promiseTracker();
+
     // Form submit handler.
     $scope.submit = function(form) {
       // Trigger validation flag.
@@ -22,7 +25,6 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
       }
 
       // Default values for the request.
-      $scope.progress = promiseTracker('progress');
       var config = {
         params : {
           'callback' : 'JSON_CALLBACK',
@@ -32,11 +34,10 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           'url' : $scope.url,
           'comments' : $scope.comments
         },
-        tracker : 'progress'
       };
 
       // Perform JSONP request.
-      $http.jsonp('response.json', config)
+      var $promise = $http.jsonp('response.json', config)
         .success(function(data, status, headers, config) {
           if (data.status == 'OK') {
             $scope.name = null;
@@ -55,11 +56,15 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $scope.progress = data;
           $scope.messages = 'There was a network error. Try again later.';
           $log.error(data);
-        });
+        })
+        .finally(function() {
+          // Hide status messages after three seconds.
+          $timeout(function() {
+            $scope.messages = null;
+          }, 3000);
+        })
 
-      // Hide the status message which was set above after 3 seconds.
-      $timeout(function() {
-        $scope.messages = null;
-      }, 3000);
+      // Track the request and show its progress to the user.
+      $scope.progress.addPromise($promise);
     };
   });
