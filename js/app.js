@@ -62,7 +62,7 @@ angular.module('myApp', ['ajoslin.promise-tracker'])
           $timeout(function() {
             $scope.messages = null;
           }, 3000);
-        })
+        });
 
       // Track the request and show its progress to the user.
       $scope.progress.addPromise($promise);
